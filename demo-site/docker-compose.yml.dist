@@ -1,0 +1,80 @@
+version: '3.3'
+
+services:
+
+  mysql:
+    build:
+      context: ${PWD}/mysql
+    container_name: mysql
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+    ports:
+    - 3306:3306/tcp
+    restart: always
+    volumes:
+    - ${VOL_MYSQL}/log:/var/log/mysql:rw
+    - ${VOL_MYSQL}/data:/var/lib/mysql:rw
+    - ${VOL_MYSQL}/dumps:/var/dumps:rw
+
+  proxy:
+    build:
+      context: ${PWD}/proxy
+    container_name: proxy
+    environment:
+      PROXY_BACKEND_HOST: ${PROXY_BACKEND_HOST}
+      PROXY_PEM_FILENAME: ${PROXY_PEM_FILENAME}
+    ports:
+    - 80:80
+    - 443:443
+    links:
+    - wordpress
+    restart: always
+    volumes:
+    - ${PROXY_SSL_FILEPATH}:/etc/ssl
+
+  wordpress:
+    build:
+      context: ${PWD}/wordpress
+      dockerfile: Dockerfile
+    container_name: wordpress
+    environment:
+      DB_HOST: ${MYSQL_HOST}
+      DB_NAME: ${MYSQL_DATABASE}
+      DB_PASSWORD: ${MYSQL_PASSWORD}
+      DB_USER: ${MYSQL_USER}
+      WP_DEBUG: ${WP_DEBUG}
+      WP_CACHE: ${WP_CACHE}
+    links:
+    - mysql
+    restart: always
+    volumes:
+    - "${VOL_WORDPRESS}/apache2/log:/var/log/apache2:rw"
+    - "${VOL_WORDPRESS}/wp-content/cache:/var/www/html/wp-content/cache:rw"
+    - "${VOL_WORDPRESS}/wp-content/languages:/var/www/html/wp-content/languages:rw"
+    - "${VOL_WORDPRESS}/wp-content/uploads:/var/www/html/wp-content/uploads:rw"
+
+  pma:
+    container_name: pma
+    image: phpmyadmin/phpmyadmin:4.8
+    depends_on:
+      - mysql
+    environment:
+      PMA_HOST: ${PMA_HOST}
+      PMA_ABSOLUTE_URI: ${PMA_ABSOLUTE_URI}
+    ports:
+      - "8080:80"
+    restart: always
+
+  sftp:
+    command: "mpusr:tr54-1g9zz:33"
+    container_name: sftp
+    image: atmoz/sftp:alpine-3.7
+    ports:
+    - "2222:22/tcp"
+    restart: always
+    volumes:
+    - "${VOL_WORDPRESS}/apache2/log:/home/mpusr/apache2/log:rw"
+    - "${VOL_WORDPRESS}/wp-content/uploads:/home/mpusr/apache2/uploads:rw"
