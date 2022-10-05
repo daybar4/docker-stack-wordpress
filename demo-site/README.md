@@ -51,8 +51,9 @@ sudo chown www-data:www-data ./volumes/wordpress/wp-content/uploads
 ```
 
 ### Cambiar permisos mysql para que pueda generar archivos con sus propios permisos
+```
 chmod -R 777 ./volumes/mysql
-
+```
 ### Copiar certificados SSL PEM autosignados al volumen persistido de Docker
 ```
 cp ./proxy/ssl/localhost.pem ./volumes/proxy/ssl
