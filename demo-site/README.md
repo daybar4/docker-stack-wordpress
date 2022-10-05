@@ -35,7 +35,7 @@ mkdir -p ./volumes/wordpress/apache2/log
 mkdir -p ./volumes/wordpress/wp-content/cache
 mkdir -p ./volumes/wordpress/wp-content/languages
 mkdir -p ./volumes/wordpress/wp-content/uploads
-mkdir -p ./proxy/etc/ssl/
+mkdir -p ./volumes/proxy/etc/ssl/
 mkdir -p ./volumes/mysql/log
 mkdir -p ./volumes/mysql/data
 mkdir -p ./volumes/mysql/dumps
@@ -56,7 +56,7 @@ chmod -R 777 ./volumes/mysql
 ```
 ### Copiar certificados SSL PEM autosignados al volumen persistido de Docker
 ```
-cp ./proxy/ssl/localhost.pem ./volumes/proxy/ssl
+cp ./proxy/etc/ssl/localhost.pem ./volumes/proxy/etc/ssl
 ```
 
 ### O generar nuestrops propios certificados autosignados para localhost
