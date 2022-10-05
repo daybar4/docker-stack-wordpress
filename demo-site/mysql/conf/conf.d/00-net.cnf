@@ -1,0 +1,4 @@
+[mysqld]
+skip-name-resolve
+max_allowed_packet=256M
+max_connections=512
