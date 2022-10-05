@@ -91,3 +91,8 @@ SSH_AUTH_SOCK=null filezilla &
 ```
 sudo chown www-data:www-data /path/to/uploads
 ```
+
+## Links
+`https://hub.docker.com/_/mysql/tags`
+`https://hub.docker.com/_/haproxy/tags`
+`https://hub.docker.com/_/debian/tags`
