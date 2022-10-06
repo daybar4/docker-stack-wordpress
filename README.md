@@ -1,5 +1,5 @@
 ## Docker Essentials Stack
-Deploy a docker stach with proxy+wordpress+mysql+pma+sftp
+Deploy a docker stach with HAProxy, Wordpress, MySQL, PHPMyAdmin and sftp
 
 # MAINTAINER
 - Name: David Aybar
