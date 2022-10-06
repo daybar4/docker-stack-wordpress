@@ -5,6 +5,12 @@
 - Email: daybar4@gmail.com
 
 ## Proceso de instalación
+Se expondrán los siguientes puertos:
+- 80: HAProxy TCP HTTP
+- 443: HAProxy TCP HTTPS
+- 3306: MySQL TCP
+- 8080: PHPMyAdmin TCP HTTP
+- 2222: SFTP TCP
 
 ### Clonemos el proyecto git al directorio actual
 ```
