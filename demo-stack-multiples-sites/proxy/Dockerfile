@@ -1,2 +1,2 @@
-FROM haproxy:1.8-alpine
+FROM haproxy:alpine3.16
 ADD etc/haproxy/haproxy.cfg /usr/local/etc/haproxy/haproxy.cfg
