@@ -82,7 +82,12 @@ En este caso recreamos el contenedor del HaProxy
 ```
 docker-compose stop proxy && docker-compose up -d
 ```
-No solo aplica para el primer build, es posible que en algún momento al tocar Wordpress de error y tengamos que reconstruir el contenedor y puede que se tenga que recrear el contenedor proxy para que vuelva a coger el backend.
+No solo aplica para el primer build, es posible que en algún momento al tocar Wordpress o reiniciar el contenedor, puede que se tenga que recrear el contenedor proxy para que vuelva a coger el backend.
+
+Si tenemos el compose.yml del proxy en un directorio separado sería suficiente con:
+```
+docker-compose up -d --force-recreate
+```
 
 ## Accedemos localmente a la web y añadimos "not trusted certificate exception" si es necesario
 - https://localhost (or any domain name aliased inside /etc/hosts)
@@ -90,7 +95,13 @@ No solo aplica para el primer build, es posible que en algún momento al tocar W
 Docker está pensado para ser un sistema cerrado de seguridad, solo exponemos los puertos externos 80/443 para acceder a través del proxy, nuestra puerta de entrada.
 Proxy se conecta internamente a WordPress mediante la variable $PROXY_BACKEND_HOST, ya que están en la misma red interna de docker y se pueden ver con el nombre del servicio.
 
+Si se quiere usar en Worpress HTTPS con un certificado válido, una vez configurado, descomentar del wp-config.php:
+``
+/*if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+	$_SERVER['HTTPS'] = 'on';
+}*/
 
+``
 # Post instalación
 
 ## Notas

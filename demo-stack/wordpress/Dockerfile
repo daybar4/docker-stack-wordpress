@@ -41,7 +41,7 @@ RUN phpenmod opcache
 ADD src /var/www/html
 
 # WordPress direct FS_METHOD requires wp-content permissions set to www-data
-RUN chown www-data:www-data /var/www/html/wp-content 
+RUN chown www-data:www-data /var/www/html/wp-content
 
 # Permissions already set by user in persistent volume folders
 #RUN chown -R www-data:www-data /var/www/html/wp-content/cache
