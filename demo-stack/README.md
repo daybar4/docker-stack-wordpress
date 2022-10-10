@@ -82,7 +82,7 @@ En este caso recreamos el contenedor del HaProxy
 ```
 docker-compose stop proxy && docker-compose up -d
 ```
-
+No solo aplica para el primer build, es posible que en algún momento al tocar Wordpress de error y tengamos que reconstruir el contenedor y puede que se tenga que recrear el contenedor proxy para que vuelva a coger el backend.
 
 ## Accedemos localmente a la web y añadimos "not trusted certificate exception" si es necesario
 - https://localhost (or any domain name aliased inside /etc/hosts)
