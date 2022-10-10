@@ -21,6 +21,6 @@ docker network ls
 ```
 ```
 sudo echo "# Docker local projects" >> /etc/hosts
-sudo echo "127.0.0.1       site1.localhost.com site2.localhost.com" >> /etc/hosts
-sudo echo "127.0.0.1       pma-site1.localhost.com pma-site2.localhost.com" >> /etc/hosts
+sudo echo "127.0.0.1       wordpress1.demo-stack.com wordpress2.demo-stack.com" >> /etc/hosts
+sudo echo "127.0.0.1       pma-wordpress1.demo-stack.com pma-wordpress2.demo-stack.com" >> /etc/hosts
 ```
