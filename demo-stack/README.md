@@ -76,6 +76,13 @@ openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -nodes -days 36
 ```
 docker-compose up -d --build
 ```
+### En caso de error de proxy 502
+Al generar por primera vez es posible que salga un 502 al conectar al backend, ya que wordpress se inicia antes que el proxy y no conecta.
+En este caso recreamos el contenedor del HaProxy
+```
+docker-compose stop proxy && docker-compose up -d
+```
+
 
 ## Accedemos localmente a la web y añadimos "not trusted certificate exception" si es necesario
 - https://localhost (or any domain name aliased inside /etc/hosts)
