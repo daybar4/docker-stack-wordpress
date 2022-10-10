@@ -1,0 +1,31 @@
+[mysqld]
+tmp_table_size=512M
+max_heap_table_size=512M
+
+;Set on 26/7/2015.
+;innodb_buffer_pool_size=5G
+
+;; 15112016
+;Disable query cache: http://www.tocker.ca/2013/09/27/how-do-you-use-the-query-cache.html
+;query_cache_type=0
+
+;; Enable cache 03112018
+query_cache_type = 1
+query_cache_limit = 2M
+#query_cache_min_res_unit = 2k
+query_cache_size = 256M
+
+innodb_buffer_pool_instances=4
+innodb_buffer_pool_size=4G
+
+lower_case_table_names = 1
+open_files_limit = 20000
+innodb_file_per_table = 1
+innodb_log_file_size = 32M
+max_allowed_packet = 16M
+
+lower_case_table_names=0
+
+thread_cache_size = 200
+interactive_timeout = 60
+wait_timeout = 60

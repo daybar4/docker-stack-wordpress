@@ -1,0 +1,23 @@
+version: '3.3'
+
+services:
+
+  proxy:
+    build:
+      context: ${PWD}/proxy
+    container_name: proxy
+    environment:
+      PROXY_BACKEND_HOST: ${PROXY_BACKEND_HOST}
+      PROXY_PEM_FILENAME: ${PROXY_PEM_FILENAME}
+    ports:
+    - 80:80
+    - 443:443
+    restart: always
+    volumes:
+    - ${PROXY_SSL_FILEPATH}:/etc/ssl
+    networks:
+      - net_front
+
+networks:
+  net_front:
+    external: true # Communication between multiple docker-compose projects, driver bridge
