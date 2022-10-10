@@ -95,13 +95,19 @@ docker-compose up -d --force-recreate
 Docker está pensado para ser un sistema cerrado de seguridad, solo exponemos los puertos externos 80/443 para acceder a través del proxy, nuestra puerta de entrada.
 Proxy se conecta internamente a WordPress mediante la variable $PROXY_BACKEND_HOST, ya que están en la misma red interna de docker y se pueden ver con el nombre del servicio.
 
-Si se quiere usar en Worpress HTTPS con un certificado válido, una vez configurado, descomentar del wp-config.php:
-``
+## Activar Worpress HTTPS con un certificado válido, una vez configurado:
+Cambiar de false a true:
+```
+/** Force SSL in login & admin */
+define('FORCE_SSL_LOGIN', false);
+define('FORCE_SSL_ADMIN', false);
+```
+Descomentar del wp-config.php:
+```
 /*if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
 	$_SERVER['HTTPS'] = 'on';
 }*/
-
-``
+```
 # Post instalación
 
 ## Notas
