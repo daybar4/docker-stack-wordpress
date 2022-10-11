@@ -38,8 +38,8 @@ docker network create net_front
 docker network ls
 ```
 ```
-sudo echo "# Docker local projects" >> /etc/hosts
-sudo echo "127.0.0.1       wordpress1.demo-stack.com wordpress2.demo-stack.com" >> /etc/hosts
-sudo echo "127.0.0.1       pma-wordpress1.demo-stack.com pma-wordpress2.demo-stack.com" >> /etc/hosts
+sudo bash -c 'echo "# Docker local projects" >> /etc/hosts'
+sudo bash -c 'echo "127.0.0.1       wordpress1.demo-stack.com wordpress2.demo-stack.com" >> /etc/hosts'
+sudo bash -c 'echo "127.0.0.1       pma-wordpress1.demo-stack.com pma-wordpress2.demo-stack.com" >> /etc/hosts'
 ```
 y añadir al fichero hosts de windows
