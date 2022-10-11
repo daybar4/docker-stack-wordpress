@@ -1,3 +1,4 @@
+## Linux
 ```
 sudo apt install -y resolvconf
 ```
@@ -19,6 +20,17 @@ sudo bash -c 'echo "nameserver 8.8.8.8" > /etc/resolv.conf'
 ```
 sudo chattr +i /etc/resolv.conf
 ```
+## END OF Linux
+## WSL2
+```
+sudo rm /etc/resolv.conf
+sudo bash -c 'echo "nameserver 8.8.8.8" > /etc/resolv.conf'
+sudo bash -c 'echo "[network]" > /etc/wsl.conf'
+sudo bash -c 'echo "generateResolvConf = false" >> /etc/wsl.conf'
+sudo chattr +i /etc/resolv.conf
+```
+## END OF WSL2
+
 ```
 docker network create net_front
 ```
