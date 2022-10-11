@@ -59,7 +59,7 @@ services:
       - net_front
 
   sftp-site1:
-    command: "mpusr:tr54-1g9zz:33"
+    command: "user:tr54-1g9zz:33"
     container_name: sftp-site1
     image: atmoz/sftp:alpine-3.7
     ports:
