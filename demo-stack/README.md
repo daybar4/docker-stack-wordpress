@@ -13,6 +13,17 @@ Se expondrán los siguientes puertos:
 - 8080: PHPMyAdmin TCP HTTP
 - 2222: SFTP TCP
 
+## Sudo no pass
+Reemplaza MY_USERNAME por tu nombre de usuario
+```
+sudo nano /etc/sudoers.d/MY_USERNAME
+```
+Añade dentro, reemplazando el mismo nombre:
+```
+MY_USERNAME ALL=(ALL) NOPASSWD:ALL
+```
+Volver a salir y entrar.
+
 ### Clonemos el proyecto git al directorio actual
 ```
 git clone <url-to-git-project>
