@@ -14,6 +14,12 @@ sudo echo "nameserver 8.8.4.4" > /etc/resolvconf/resolv.conf.d/base
 sudo resolvconf -u
 ```
 ```
+sudo bash -c 'echo "nameserver 8.8.8.8" > /etc/resolv.conf'
+```
+```
+sudo chattr +i /etc/resolv.conf
+```
+```
 docker network create net_front
 ```
 ```
